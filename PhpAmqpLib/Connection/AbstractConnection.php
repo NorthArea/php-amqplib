@@ -716,10 +716,10 @@ abstract class AbstractConnection extends AbstractChannel
         try {
             $this->closeChannels();
             list($class_id, $method_id, $args) = $this->protocolWriter->connectionClose(
-                $reply_code,
-                $reply_text,
                 $method_sig[0],
-                $method_sig[1]
+                $reply_code,
+                $method_sig[1],
+                $reply_text
             );
             $this->send_method_frame(array($class_id, $method_id), $args);
             $result = $this->wait(

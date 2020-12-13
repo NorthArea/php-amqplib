@@ -132,13 +132,13 @@ class Protocol080
     }
 
     /**
-     * @param int $reply_code
-     * @param string $reply_text
      * @param int $class_id
+     * @param int $reply_code
      * @param int $method_id
+     * @param string $reply_text
      * @return array
      */
-    public function connectionClose($reply_code, $reply_text = '', $class_id, $method_id)
+    public function connectionClose($class_id, $reply_code, $method_id, $reply_text = '')
     {
         $writer = new AMQPWriter();
         $writer->write_short($reply_code);
