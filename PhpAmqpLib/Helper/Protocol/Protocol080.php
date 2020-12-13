@@ -218,12 +218,12 @@ class Protocol080
 
     /**
      * @param int $reply_code
-     * @param string $reply_text
      * @param int $class_id
      * @param int $method_id
+     * @param string $reply_text
      * @return array
      */
-    public function channelClose($reply_code, $reply_text = '', $class_id, $method_id)
+    public function channelClose($reply_code, $class_id, $method_id, $reply_text = '')
     {
         $writer = new AMQPWriter();
         $writer->write_short($reply_code);
@@ -578,12 +578,12 @@ class Protocol080
 
     /**
      * @param int $reply_code
-     * @param string $reply_text
      * @param string $exchange
      * @param string $routing_key
+     * @param string $reply_text
      * @return array
      */
-    public function basicReturn($reply_code, $reply_text = '', $exchange, $routing_key)
+    public function basicReturn($reply_code, $exchange, $routing_key, $reply_text = '')
     {
         $writer = new AMQPWriter();
         $writer->write_short($reply_code);
@@ -846,13 +846,13 @@ class Protocol080
     }
 
     /**
-     * @param int $reply_code
-     * @param string $reply_text
      * @param string $exchange
      * @param string $routing_key
+     * @param string $reply_text
+     * @param int $reply_code
      * @return array
      */
-    public function fileReturn($reply_code = 200, $reply_text = '', $exchange, $routing_key)
+    public function fileReturn($exchange, $routing_key, $reply_text = '', $reply_code = 200)
     {
         $writer = new AMQPWriter();
         $writer->write_short($reply_code);
@@ -1009,13 +1009,13 @@ class Protocol080
     }
 
     /**
+     * @param string $routing_key
+     * @param string $exchange
      * @param int $reply_code
      * @param string $reply_text
-     * @param string $exchange
-     * @param string $routing_key
      * @return array
      */
-    public function streamReturn($reply_code = 200, $reply_text = '', $exchange, $routing_key)
+    public function streamReturn($routing_key, $exchange, $reply_code = 200, $reply_text = '')
     {
         $writer = new AMQPWriter();
         $writer->write_short($reply_code);

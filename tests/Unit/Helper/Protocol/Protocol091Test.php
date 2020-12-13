@@ -20,7 +20,7 @@ class Protocol091Test extends TestCase
     public function channel_close()
     {
         $expected = "\x00\x00\x00\x00\x00\x00\x00";
-        list($class_id, $method_id, $args) = $this->protocol091->channelClose(0, '', 0, 0);
+        list($class_id, $method_id, $args) = $this->protocol091->channelClose(0, 0, 0, '');
 
         $this->assertEquals($expected, $args->getvalue());
     }
@@ -31,11 +31,11 @@ class Protocol091Test extends TestCase
     public function channel_close_error()
     {
         $expected = "\x00\x00\x05error\x00\x00\x00\x00";
-        list($class_id, $method_id, $args) = $this->protocol091->channelClose(0, 'error', 0, 0);
+        list($class_id, $method_id, $args) = $this->protocol091->channelClose(0, 0, 0, 'error');
         $this->assertEquals($expected, $args->getvalue());
 
         $expected = "\x00\x00\x05error\x00\x14\x00\x28";
-        list($class_id, $method_id, $args) = $this->protocol091->channelClose(0, 'error', 20, 40);
+        list($class_id, $method_id, $args) = $this->protocol091->channelClose(0, 20, 40, 'error');
         $this->assertEquals($expected, $args->getvalue());
     }
 

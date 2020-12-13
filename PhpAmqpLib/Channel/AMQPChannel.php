@@ -180,9 +180,9 @@ class AMQPChannel extends AbstractChannel
         }
         list($class_id, $method_id, $args) = $this->protocolWriter->channelClose(
             $reply_code,
+            $method_sig[1],
             $reply_text,
-            $method_sig[0],
-            $method_sig[1]
+            $method_sig[0]
         );
 
         try {

@@ -212,12 +212,12 @@ class Protocol091
 
     /**
      * @param int $reply_code
-     * @param string $reply_text
      * @param int $class_id
      * @param int $method_id
+     * @param string $reply_text
      * @return array
      */
-    public function channelClose($reply_code, $reply_text = '', $class_id, $method_id)
+    public function channelClose($reply_code, $class_id, $method_id, $reply_text = '')
     {
         $writer = new AMQPWriter();
         $writer->write_short($reply_code);
@@ -636,12 +636,12 @@ class Protocol091
 
     /**
      * @param int $reply_code
-     * @param string $reply_text
      * @param string $exchange
      * @param string $routing_key
+     * @param string $reply_text
      * @return array
      */
-    public function basicReturn($reply_code, $reply_text = '', $exchange, $routing_key)
+    public function basicReturn($reply_code, $exchange, $routing_key, $reply_text = '')
     {
         $writer = new AMQPWriter();
         $writer->write_short($reply_code);
