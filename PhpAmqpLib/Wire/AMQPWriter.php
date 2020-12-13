@@ -136,9 +136,9 @@ class AMQPWriter extends AbstractClient
      */
     public function write_short($n)
     {
-        if ($n < 0 || $n > 65535) {
+        /*if ($n < 0 || $n > 65535) {
             throw new AMQPInvalidArgumentException('Short out of range: ' . $n);
-        }
+        }*/
 
         $this->out .= pack('n', $n);
 
