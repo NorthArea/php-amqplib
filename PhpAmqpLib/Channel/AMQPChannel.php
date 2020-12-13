@@ -372,8 +372,8 @@ class AMQPChannel extends AbstractChannel
         $ticket = $this->getTicket($ticket);
 
         list($class_id, $method_id, $args) = $this->protocolWriter->exchangeDeclare(
-            $ticket,
             $exchange,
+            $ticket,
             $type,
             $passive,
             $durable,

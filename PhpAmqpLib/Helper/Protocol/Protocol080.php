@@ -272,8 +272,8 @@ class Protocol080
     }
 
     /**
-     * @param int $ticket
      * @param string $exchange
+     * @param int $ticket
      * @param string $type
      * @param bool $passive
      * @param bool $durable
@@ -283,7 +283,7 @@ class Protocol080
      * @param array $arguments
      * @return array
      */
-    public function exchangeDeclare($ticket = 1, $exchange, $type = 'direct', $passive = false, $durable = false, $auto_delete = false, $internal = false, $nowait = false, $arguments = array())
+    public function exchangeDeclare($exchange, $ticket = 1, $type = 'direct', $passive = false, $durable = false, $auto_delete = false, $internal = false, $nowait = false, $arguments = array())
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
