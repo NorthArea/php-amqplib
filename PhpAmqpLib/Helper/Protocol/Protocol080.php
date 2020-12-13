@@ -865,13 +865,13 @@ class Protocol080
     /**
      * @param string $consumer_tag
      * @param int $delivery_tag
-     * @param bool $redelivered
      * @param string $exchange
      * @param string $routing_key
      * @param string $identifier
+     * @param bool $redelivered
      * @return array
      */
-    public function fileDeliver($consumer_tag, $delivery_tag, $redelivered = false, $exchange, $routing_key, $identifier)
+    public function fileDeliver($consumer_tag, $delivery_tag, $exchange, $routing_key, $identifier, $redelivered = false)
     {
         $writer = new AMQPWriter();
         $writer->write_shortstr($consumer_tag);

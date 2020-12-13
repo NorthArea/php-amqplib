@@ -654,12 +654,12 @@ class Protocol091
     /**
      * @param string $consumer_tag
      * @param int $delivery_tag
-     * @param bool $redelivered
      * @param string $exchange
      * @param string $routing_key
+     * @param bool $redelivered
      * @return array
      */
-    public function basicDeliver($consumer_tag, $delivery_tag, $redelivered = false, $exchange, $routing_key)
+    public function basicDeliver($consumer_tag, $delivery_tag, $exchange, $routing_key, $redelivered = false)
     {
         $writer = new AMQPWriter();
         $writer->write_shortstr($consumer_tag);
