@@ -10,14 +10,14 @@ use PhpAmqpLib\Wire\AMQPReader;
 class Protocol080
 {
     /**
+     * @param mixed $server_properties
      * @param int $version_major
      * @param int $version_minor
-     * @param mixed $server_properties
      * @param string $mechanisms
      * @param string $locales
      * @return array
      */
-    public function connectionStart($version_major = 0, $version_minor = 8, $server_properties, $mechanisms = 'PLAIN', $locales = 'en_US')
+    public function connectionStart($server_properties, $version_major = 0, $version_minor = 8, $mechanisms = 'PLAIN', $locales = 'en_US')
     {
         $writer = new AMQPWriter();
         $writer->write_octet($version_major);
