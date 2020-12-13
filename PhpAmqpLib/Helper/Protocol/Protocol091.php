@@ -266,8 +266,8 @@ class Protocol091
     }
 
     /**
-     * @param int $ticket
      * @param string $exchange
+     * @param int $ticket
      * @param string $type
      * @param bool $passive
      * @param bool $durable
@@ -277,7 +277,7 @@ class Protocol091
      * @param array $arguments
      * @return array
      */
-    public function exchangeDeclare($ticket = 0, $exchange, $type = 'direct', $passive = false, $durable = false, $auto_delete = false, $internal = false, $nowait = false, $arguments = array())
+    public function exchangeDeclare($exchange, $ticket = 0, $type = 'direct', $passive = false, $durable = false, $auto_delete = false, $internal = false, $nowait = false, $arguments = array())
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
@@ -299,13 +299,13 @@ class Protocol091
     }
 
     /**
-     * @param int $ticket
      * @param string $exchange
+     * @param int $ticket
      * @param bool $if_unused
      * @param bool $nowait
      * @return array
      */
-    public function exchangeDelete($ticket = 0, $exchange, $if_unused = false, $nowait = false)
+    public function exchangeDelete($exchange, $ticket = 0, $if_unused = false, $nowait = false)
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
@@ -325,15 +325,15 @@ class Protocol091
     }
 
     /**
-     * @param int $ticket
      * @param string $destination
      * @param string $source
+     * @param int $ticket
      * @param string $routing_key
      * @param bool $nowait
      * @param array $arguments
      * @return array
      */
-    public function exchangeBind($ticket = 0, $destination, $source, $routing_key = '', $nowait = false, $arguments = array())
+    public function exchangeBind($destination, $source, $ticket = 0, $routing_key = '', $nowait = false, $arguments = array())
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
@@ -356,15 +356,15 @@ class Protocol091
     }
 
     /**
-     * @param int $ticket
      * @param string $destination
      * @param string $source
+     * @param int $ticket
      * @param string $routing_key
      * @param bool $nowait
      * @param array $arguments
      * @return array
      */
-    public function exchangeUnbind($ticket = 0, $destination, $source, $routing_key = '', $nowait = false, $arguments = array())
+    public function exchangeUnbind($destination, $source, $ticket = 0, $routing_key = '', $nowait = false, $arguments = array())
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
@@ -421,15 +421,15 @@ class Protocol091
     }
 
     /**
+     * @param string $exchange
      * @param int $ticket
      * @param string $queue
-     * @param string $exchange
      * @param string $routing_key
      * @param bool $nowait
      * @param array $arguments
      * @return array
      */
-    public function queueBind($ticket = 0, $queue = '', $exchange, $routing_key = '', $nowait = false, $arguments = array())
+    public function queueBind($exchange, $ticket = 0, $queue = '', $routing_key = '', $nowait = false, $arguments = array())
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
@@ -506,14 +506,14 @@ class Protocol091
     }
 
     /**
+     * @param string $exchange
      * @param int $ticket
      * @param string $queue
-     * @param string $exchange
      * @param string $routing_key
      * @param array $arguments
      * @return array
      */
-    public function queueUnbind($ticket = 0, $queue = '', $exchange, $routing_key = '', $arguments = array())
+    public function queueUnbind($exchange, $ticket = 0, $queue = '', $routing_key = '', $arguments = array())
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);

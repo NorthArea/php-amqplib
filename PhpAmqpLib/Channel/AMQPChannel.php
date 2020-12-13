@@ -372,8 +372,8 @@ class AMQPChannel extends AbstractChannel
         $ticket = $this->getTicket($ticket);
 
         list($class_id, $method_id, $args) = $this->protocolWriter->exchangeDeclare(
-            $exchange,
             $ticket,
+            $exchange,
             $type,
             $passive,
             $durable,
@@ -466,9 +466,9 @@ class AMQPChannel extends AbstractChannel
         $ticket = $this->getTicket($ticket);
 
         list($class_id, $method_id, $args) = $this->protocolWriter->exchangeBind(
-            $ticket,
             $destination,
             $source,
+            $ticket,
             $routing_key,
             $nowait,
             $arguments
@@ -515,9 +515,9 @@ class AMQPChannel extends AbstractChannel
         $ticket = $this->getTicket($ticket);
 
         list($class_id, $method_id, $args) = $this->protocolWriter->exchangeUnbind(
-            $ticket,
             $destination,
             $source,
+            $ticket,
             $routing_key,
             $nowait,
             $arguments
@@ -560,9 +560,9 @@ class AMQPChannel extends AbstractChannel
         $ticket = $this->getTicket($ticket);
 
         list($class_id, $method_id, $args) = $this->protocolWriter->queueBind(
-            $ticket,
             $queue,
             $exchange,
+            $ticket,
             $routing_key,
             $nowait,
             $arguments
@@ -607,9 +607,9 @@ class AMQPChannel extends AbstractChannel
         $ticket = $this->getTicket($ticket);
 
         list($class_id, $method_id, $args) = $this->protocolWriter->queueUnbind(
-            $ticket,
             $queue,
             $exchange,
+            $ticket,
             $routing_key,
             $arguments
         );

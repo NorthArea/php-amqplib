@@ -114,7 +114,7 @@ class Protocol091Test extends TestCase
     {
         $expected = "\x00\x00\x03foo\x06direct\x00\x00\x00\x00\x00";
         list($class_id, $method_id, $args) = $this->protocol091->exchangeDeclare(
-            0, 'foo', 'direct', false,
+            'foo', 0, 'direct', false,
             false, false,
             false, false,
             []
@@ -129,7 +129,7 @@ class Protocol091Test extends TestCase
     public function exchange_delete()
     {
         $expected = "\x00\x00\x03foo\x00";
-        list($class_id, $method_id, $args) = $this->protocol091->exchangeDelete(0, 'foo', false, false);
+        list($class_id, $method_id, $args) = $this->protocol091->exchangeDelete('foo', 0, false, false);
 
         $this->assertEquals($expected, $args->getvalue());
     }
@@ -140,7 +140,7 @@ class Protocol091Test extends TestCase
     public function exchange_bind()
     {
         $expected = "\x00\x00\x03foo\x03bar\x03baz\x00\x00\x00\x00\x00";
-        list($class_id, $method_id, $args) = $this->protocol091->exchangeBind(0, 'foo', 'bar', 'baz', false, []);
+        list($class_id, $method_id, $args) = $this->protocol091->exchangeBind('foo', 'bar', 0, 'baz', false, []);
 
         $this->assertEquals($expected, $args->getvalue());
     }
@@ -151,7 +151,7 @@ class Protocol091Test extends TestCase
     public function exchange_unbind()
     {
         $expected = "\x00\x00\x03foo\x03bar\x03baz\x00\x00\x00\x00\x00";
-        list($class_id, $method_id, $args) = $this->protocol091->exchangeUnbind(0, 'foo', 'bar', 'baz', false, []);
+        list($class_id, $method_id, $args) = $this->protocol091->exchangeUnbind('foo', 'bar', 0, 'baz', false, []);
 
         $this->assertEquals($expected, $args->getvalue());
     }
@@ -162,7 +162,7 @@ class Protocol091Test extends TestCase
     public function queue_bind()
     {
         $expected = "\x00\x00\x03foo\x03bar\x03baz\x00\x00\x00\x00\x00";
-        list($class_id, $method_id, $args) = $this->protocol091->queueBind(0, 'foo', 'bar', 'baz', false, []);
+        list($class_id, $method_id, $args) = $this->protocol091->queueBind('bar', 0, 'foo', 'baz', false, []);
 
         $this->assertEquals($expected, $args->getvalue());
     }
@@ -173,7 +173,7 @@ class Protocol091Test extends TestCase
     public function queue_unbind()
     {
         $expected = "\x00\x00\x03foo\x03bar\x03baz\x00\x00\x00\x00";
-        list($class_id, $method_id, $args) = $this->protocol091->queueUnbind(0, 'foo', 'bar', 'baz', []);
+        list($class_id, $method_id, $args) = $this->protocol091->queueUnbind('bar', 0, 'foo', 'baz', []);
 
         $this->assertEquals($expected, $args->getvalue());
     }

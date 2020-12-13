@@ -305,13 +305,13 @@ class Protocol080
     }
 
     /**
-     * @param int $ticket
      * @param string $exchange
+     * @param int $ticket
      * @param bool $if_unused
      * @param bool $nowait
      * @return array
      */
-    public function exchangeDelete($ticket = 1, $exchange, $if_unused = false, $nowait = false)
+    public function exchangeDelete($exchange, $ticket = 1, $if_unused = false, $nowait = false)
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
@@ -365,15 +365,15 @@ class Protocol080
     }
 
     /**
+     * @param string $exchange
      * @param int $ticket
      * @param string $queue
-     * @param string $exchange
      * @param string $routing_key
      * @param bool $nowait
      * @param array $arguments
      * @return array
      */
-    public function queueBind($ticket = 1, $queue = '', $exchange, $routing_key = '', $nowait = false, $arguments = array())
+    public function queueBind($exchange, $ticket = 1, $queue = '', $routing_key = '', $nowait = false, $arguments = array())
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
@@ -450,14 +450,14 @@ class Protocol080
     }
 
     /**
+     * @param string $exchange
      * @param int $ticket
      * @param string $queue
-     * @param string $exchange
      * @param string $routing_key
      * @param array $arguments
      * @return array
      */
-    public function queueUnbind($ticket = 1, $queue = '', $exchange, $routing_key = '', $arguments = array())
+    public function queueUnbind($exchange, $ticket = 1, $queue = '', $routing_key = '', $arguments = array())
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
@@ -826,15 +826,15 @@ class Protocol080
     }
 
     /**
+     * @param string $identifier
      * @param int $ticket
      * @param string $exchange
      * @param string $routing_key
      * @param bool $mandatory
      * @param bool $immediate
-     * @param string $identifier
      * @return array
      */
-    public function filePublish($ticket = 1, $exchange = '', $routing_key = '', $mandatory = false, $immediate = false, $identifier)
+    public function filePublish($identifier, $ticket = 1, $exchange = '', $routing_key = '', $mandatory = false, $immediate = false)
     {
         $writer = new AMQPWriter();
         $writer->write_short($ticket);
